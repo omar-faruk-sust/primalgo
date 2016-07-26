@@ -24,17 +24,38 @@
 
 		function PrintResult($parent, $graph, $verticesCount)
 		{
+
+			echo '<div class"row"><div class="panel panel-default">';
+			echo '<div class="panel-heading">Panel heading</div>';
+			echo '<div class="panel-body">
+			<p>...</p>
+			</div>';
+
+			echo '<table class="table">';
+			echo "<thead>
+		      <tr>
+		        <th>Edge - Edge</th>
+		        <th>Weight</th>
+		        </tr>
+		    </thead>";
 			$sum = 0;
 			$str = "Total cost of minimum spanning tree is = SUM OF (";
-			echo "<pre>" . "Edge     Weight" . "</pre>";
+			
 			for ($i = 1; $i < $verticesCount; ++$i) {
+				echo "<tr>";
 				$sum = $sum + $graph[$i][$parent[$i]];
-				echo "<pre>" . $parent[$i] . " - " . $i . "    " . $graph[$i][$parent[$i]] . "</pre>";
+				echo "<td>". $parent[$i] . " - " . $i ."</td>";
+				echo "<td>". $graph[$i][$parent[$i]] ."</td>";
 				$str .= " ".$graph[$i][$parent[$i]] ."+";
+				echo "</td>";
 			}
 			$str = rtrim($str, "+");
 			$str .= ")";
+			echo '</table>';
+
 			echo $str . " = " .$sum;
+
+			echo '</div></div>';
 
 		}
 
